@@ -1,0 +1,45 @@
+.header-part{
+   background: url('./food_image.png') no-repeat center center;
+   background-size: cover;
+   height: 74vh;
+   width: 80vw;
+   margin-left: 10vw;
+   margin-top: 10vh;
+   position: relative;
+}
+.header-content{
+    position: absolute;
+    max-width: 70%;
+    display: flex;
+    flex-direction: column;
+    bottom: 10%;
+    left: 4vw;
+    gap: 14px;
+    animation: fadeIn 3s;
+}
+.header-content h2{
+   font-weight: 800;
+   font-size: 40px;
+   color: red;
+   font-size: max(4.2vw ,22px);
+}
+.header-content p{
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.4vw;
+    line-height: 30px;
+    gap: 10px;
+}
+.header-content button{
+    border: none;
+    color: #747474;
+    font-weight: 700;
+    background-color: #fff;
+    font-size: max(1vw,14px);
+    border-radius: 50px;
+}
+#view-menu{
+    width: 100px;
+    height: 36px;
+    cursor: pointer;
+}

@@ -1,0 +1,106 @@
+.food-list {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .food-list h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .food-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .food-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.2s;
+  }
+  
+  .food-item:hover {
+    transform: scale(1.02);
+  }
+  
+  .food-details {
+    padding: 15px;
+    position: relative;
+  }
+  
+  .food-details p {
+    margin: 10px 0;
+    font-size: 14px;
+  }
+  
+  .food-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: red;
+    transition: color 0.2s;
+  }
+  
+  .delete-button:hover {
+    color: darkred;
+  }
+  
+  @media (max-width: 1024px) {
+    .food-grid {
+      grid-template-columns: repeat(2, 1fr); 
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .food-details p {
+      font-size: 12px;
+    }
+  
+    .food-image {
+      height: 150px;
+    }
+  
+    .delete-button {
+      font-size: 20px; 
+      top: 15px; 
+      right: 15px; 
+  
+    .food-grid {
+      grid-template-columns: repeat(1, 1fr); 
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .food-details p {
+      font-size: 10px;
+    }
+  
+    .food-image {
+      height: 120px;
+    }
+  
+    .delete-button {
+      font-size: 24px; 
+      top: 10px; 
+      right: 10px; 
+    }
+  }
+  
+}
