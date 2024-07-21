@@ -49,12 +49,24 @@
   #basket-dimension{
     font-size: 23px;
   }
-  #signup{
-    width: 70px;
-    height: 30px;
-   border-radius: 40%;
-   cursor: pointer;
+  #signup {
+    width: 100px; 
+    height: 40px; 
+    border-radius: 12px; 
+    cursor: pointer; 
+     background-color: burlywood;
+    color: rgb(56, 54, 54); 
+    border: none; 
+    font-size: 16px; 
+    font-weight: bold; 
+    transition: background-color 0.3s ease; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   }
+  
+  #signup:hover {
+    background-color: tomato; 
+  }
+  
   #search-here{
     width: 120px;
   }

@@ -3,7 +3,7 @@ import './Navbar.css';
 import { FaBasketShopping } from "react-icons/fa6";
 
 
-function Navbar() {
+function Navbar({setShowLogin}) {
 
   const [menu ,setMenu] = useState("home-underline");
 
@@ -21,7 +21,7 @@ function Navbar() {
       </div>
       <div className='navbar-right'>
       <div className='singup-area'>
-          <button id='signup'>Signup</button>
+          <button onClick={setShowLogin} id='signup'>Signup</button>
       </div>
       <div className='basket'>
         <FaBasketShopping id='basket-dimension' />
