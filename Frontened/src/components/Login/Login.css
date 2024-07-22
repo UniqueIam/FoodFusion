@@ -1,0 +1,116 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+}
+#cross-icon{
+    position:relative;
+    left: 100px;
+    top: -4px;
+    cursor: pointer;
+}
+.login-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
+    padding: 30px;
+    width: 350px; 
+    text-align: center;
+    position: relative;
+}
+
+.login-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login-title h2 {
+    margin: 0;
+    font-size: 28px;
+    color: #333; 
+    font-weight: 800;
+    text-transform:capitalize;
+}
+
+.login-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* More spacing between inputs */
+    margin-bottom: 20px;
+}
+
+.login-inputs input {
+    padding: 12px; /* Larger padding for better touch targets */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px; /* Larger font size */
+    transition: border-color 0.3s; /* Smooth border transition */
+}
+
+.login-inputs input:focus {
+    border-color: #007bff; /* Blue border on focus */
+    outline: none; /* Remove default outline */
+}
+
+button {
+    padding: 12px; /* Larger padding */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px; /* Less margin on top */
+    width: 100%;
+    font-size: 16px; /* Larger font size */
+    transition: background-color 0.3s; /* Smooth background transition */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.login-pop-condition {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+    font-size: 14px; /* Larger font size */
+    color: #666; /* Softer text color */
+}
+
+.login-pop-condition input {
+    margin-top: -16px;
+}
+
+.login-pop-condition p {
+    margin: 0;
+}
+
+.login-pop-condition span {
+    color: #007bff;
+    cursor: pointer;
+    transition: color 0.3s; 
+}
+
+.login-pop-condition span:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+#new-acc,#exist-acc {
+    cursor: pointer;
+    color: tomato;
+    font-weight: 800;
+}
+
+
+/* <img onClick={()=>setShowLogin(false)} src={assets.crossIcon} alt='cross icon' id='cross-icon'/> */
