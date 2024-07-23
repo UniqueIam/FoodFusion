@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Navbar.css';
 import { FaBasketShopping } from "react-icons/fa6";
+import { StoreContext } from '../../context/StoreContext';
+import { assets } from '../../assets/assets';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-
-function Navbar({setShowLogin}) {
+ function Navbar({setShowLogin}) {
 
   const [menu ,setMenu] = useState("home-underline");
+  const {token,setToken} = useContext(StoreContext);
+
+  const navigate = useNavigate();
+
+  const logout = () =>{
+    localStorage.removeItem("token");
+    setToken("");
+    navigate("/")
+  }
 
   return (
     <div className='nav-part'>
       {/* <img src={assets.food_logo} alt='food logo' /> */}
-          <h2 id='food'>Food</h2>
+          <Link to='/'><h2 id='food'>Food</h2></Link>
           <div className='navbar-center'>
       <ul className='navbar-menu'>
         <li onClick={()=>setMenu("home-underline")} className={menu ==="home-underline"?"active":""}>Home</li>
@@ -21,10 +33,22 @@ function Navbar({setShowLogin}) {
       </div>
       <div className='navbar-right'>
       <div className='singup-area'>
-          <button onClick={setShowLogin} id='signup'>Signup</button>
+        {!token 
+        ?<button id='signup' onClick={()=>setShowLogin(true)}>Signup</button>
+        :<div className='navbar-profile'>
+          <img src={assets.profile_icon} alt='' />
+          <ul className='nav-profle-dropdown'>
+            <li>
+              <img src={assets.order} alt='' /><p>Orders</p>
+            </li><hr/>
+            <li onClick={logout}><img src={assets.logout_icon} alt='' /><p>Logout</p> </li>
+          </ul>
+        </div>
+        }
+          
       </div>
       <div className='basket'>
-        <FaBasketShopping id='basket-dimension' />
+        <Link to='/cart'><FaBasketShopping id='basket-dimension' /></Link>
         <div className='dot'></div>
       </div>
       <div className='search-bar'>

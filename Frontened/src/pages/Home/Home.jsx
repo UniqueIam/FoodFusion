@@ -11,6 +11,8 @@ function Home() {
     <>
      <Header />
      <Menu category={category} setCategory={setCategory}/>
+     <br/>
+     <hr/>
      <FoodDisplay category={category}/>
     </>
   )

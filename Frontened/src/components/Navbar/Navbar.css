@@ -1,74 +1,146 @@
 .nav-part {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #f8f8f8;
-    justify-content: space-between;
-  }
-  .nav-part .active{
-    padding-bottom: 2px;
-    border-bottom: 2px solid black;
-  }
-  #food{
-    color: red;
-    font-family: sans-serif;
-    font-size: 25px;
-  }
-  .navbar-menu{
-    display: flex;
-    gap: 50px;
-    list-style: none;
-    cursor: pointer;
-    font-size: 19.7px;
-  }
-  .home-underline{
-    border-bottom: 2px solid black;
-  }
-  .nav-part img {
-    height: 100px;
-    width: auto;
-  }
-  .navbar-right{
-    display: flex;
-    align-items: center;
-    gap: 27px;
-  }
-  .basket{
-    position: relative;
-    cursor: pointer;
-  }
-  .basket .dot{
-    position: absolute;
-    background-color: red;
-    min-height: 10px;
-    min-width: 10px;
-    top: -7px;
-    border-radius: 10px;
-    right: -6px;
-  }
-  #basket-dimension{
-    font-size: 23px;
-  }
-  #signup {
-    width: 100px; 
-    height: 40px; 
-    border-radius: 12px; 
-    cursor: pointer; 
-     background-color: burlywood;
-    color: rgb(56, 54, 54); 
-    border: none; 
-    font-size: 16px; 
-    font-weight: bold; 
-    transition: background-color 0.3s ease; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  }
-  
-  #signup:hover {
-    background-color: tomato; 
-  }
-  
-  #search-here{
-    width: 120px;
-  }
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f8f8f8;
+  justify-content: space-between;
+}
 
-  
+.nav-part .active {
+  padding-bottom: 2px;
+  border-bottom: 2px solid black;
+}
+
+#food {
+  color: red;
+  font-family: sans-serif;
+  font-size: 25px;
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 50px;
+  list-style: none;
+  cursor: pointer;
+  font-size: 19.7px;
+}
+
+.home-underline {
+  border-bottom: 2px solid black;
+}
+
+.nav-part img {
+  height: 100px;
+  width: auto;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+}
+
+.basket {
+  position: relative;
+  cursor: pointer;
+}
+
+.basket .dot {
+  position: absolute;
+  background-color: red;
+  min-height: 10px;
+  min-width: 10px;
+  top: -7px;
+  border-radius: 10px;
+  right: -6px;
+}
+
+#basket-dimension {
+  font-size: 23px;
+}
+
+#signup {
+  width: 100px;
+  height: 40px;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: burlywood;
+  color: rgb(56, 54, 54);
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#signup:hover {
+  background-color: tomato;
+}
+
+#search-here {
+  width: 120px;
+}
+
+.navbar-profile {
+  position: relative;
+}
+
+.nav-profle-dropdown {
+  position: absolute;
+  display: none;
+  right: 0;
+  z-index: 1;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 4px;
+  background-color: #fff2ff;
+  border: 1px solid tomato;
+  outline: 2px solid white;
+  list-style: none;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.navbar-profile:hover .nav-profle-dropdown {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-profle-dropdown li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-profle-dropdown li:hover {
+  background-color: rgba(255, 99, 71, 0.2); /* Light tomato color */
+}
+
+.nav-profle-dropdown img {
+  width: 20px;
+  height: 23px;
+  filter: brightness(0.8);
+  transition: filter 0.3s ease;
+}
+
+.nav-profle-dropdown li:hover img {
+  filter: brightness(1);
+}
+
+.nav-profle-dropdown li p {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.nav-profle-dropdown li p:hover {
+  color: tomato;
+}

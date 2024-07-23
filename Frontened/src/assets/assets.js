@@ -9,6 +9,7 @@ import menu8 from './menu8.png'
 import crossIcon from './cross-icon.png'
 import add_green from './add_green.png'
 import minus_red from './minus_red.png'
+import add from './add.png'
 import food1 from './food1.png'
 import food2 from './food2.png'
 import food3 from './food3.png'
@@ -19,9 +20,12 @@ import food7 from './food7.png'
 import food8 from './food8.png'
 import food9 from './food9.png'
 import food10 from './food3.png'
+import profile_icon from './profile-icon.png'
+import logout_icon from './logout_icon.png'
+import order from './order.png'
 
 export const assets ={
-  crossIcon,add_green,minus_red
+  crossIcon,add_green,minus_red,add,profile_icon,logout_icon,order
 }
 export const menuList = [
   {
@@ -106,7 +110,7 @@ export const foodList =[
     price:60,
     image:food6,
     description:"Chicken Salad is a hearty dish featuring cooked chicken, mixed with crisp vegetables, and often combined with a creamy dressing or light vinaigrette.",
-    category:"ice-cream"
+    category:"Deserts"
   },
   {
     _id:7,
@@ -114,7 +118,7 @@ export const foodList =[
     price:50,
     image:food7,
     description:"Chicken Salad is a hearty dish featuring cooked chicken, mixed with crisp vegetables, and often combined with a creamy dressing or light vinaigrette.",
-    category:"ice-cream"
+    category:"Deserts"
   },
   {
     _id:8,
@@ -130,7 +134,7 @@ export const foodList =[
     price:20,
     image:food9,
     description:"Chicken Salad is a hearty dish featuring cooked chicken, mixed with crisp vegetables, and often combined with a creamy dressing or light vinaigrette.",
-    category:"Cake"
+    category:"Deserts"
   },
   {
     _id:10,
@@ -138,6 +142,6 @@ export const foodList =[
     price:100,
     image:food10,
     description:"Chicken Salad is a hearty dish featuring cooked chicken, mixed with crisp vegetables, and often combined with a creamy dressing or light vinaigrette.",
-    category:"Cake"
+    category:"Deserts"
   }
 ]

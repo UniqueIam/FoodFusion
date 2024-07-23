@@ -9,6 +9,11 @@ body{
 a{
   text-decoration: none;
 }
+hr{
+  margin-left: 10%;
+  margin-right: 10%;
+  color: rgb(44, 44, 44);
+}
 @keyframes fadeIn {
   0%{
     opacity: 0;

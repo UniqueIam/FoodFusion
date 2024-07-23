@@ -1,48 +1,40 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './FoodItem.css';
 import { assets } from '../../assets/assets';
+import { StoreContext } from '../../context/StoreContext';
 
-const FoodItem = ({ id, name, price, image, description, addItem }) => {
-  const [itemCount, setItemCount] = useState(0);
-
-  const handleAddItem = () => {
-    setItemCount(prev => prev + 1);
-    addItem({ id, name, price, image, description });
-  };
-
-  const handleRemoveItem = () => {
-    setItemCount(prev => Math.max(prev - 1, 0));
-  };
+const FoodItem = ({ id, name, price, image, description }) => {
+  const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext);
 
   return (
     <div className='food-item'>
       <div className='food-item-image-container'>
-        <img src={image} className='food-item-image' alt='' />
-        {itemCount === 0 ? (
+        <img src={url + "/uploads/" + image} className='food-item-image' alt={name} />
+        {!cartItems[id] ? (
           <img
             id='add-icon'
-            onClick={handleAddItem}
+            onClick={() => addToCart(id)}
             src={assets.add_green}
             alt='Add'
             className='food-item-add-icon'
-            style={{height:"23px", width:"23px"}}
+            style={{ height: '23px', width: '23px' }}
           />
         ) : (
           <div className='food-item-counter'>
             <img
-              onClick={handleRemoveItem}
+              onClick={() => removeFromCart(id)}
               src={assets.minus_red}
               alt='Remove'
               className='food-item-minus-icon'
-              style={{height:"23px", width:"23px"}}
+              style={{ height: '23px', width: '23px' }}
             />
-            <p id='item-count'>{itemCount}</p>
+            <p id='item-count'>{cartItems[id]}</p>
             <img
-              onClick={handleAddItem}
+              onClick={() => addToCart(id)}
               src={assets.add_green}
               alt='Add'
               className='food-item-add-icon'
-              style={{height:"23px", width:"23px"}}
+              style={{ height: '23px', width: '23px' }}
             />
           </div>
         )}
