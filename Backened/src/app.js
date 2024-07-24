@@ -4,6 +4,7 @@ import foodRouter from "./routes/food.route.js";
 import path from 'path';
 import dotenv from 'dotenv';
 import userRouter from "./routes/user.route.js";
+import cartRouter from "./routes/card.route.js";
 
 dotenv.config();
 
@@ -21,5 +22,6 @@ const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 app.use("/api/food", foodRouter);
 app.use("/api/user",userRouter);
+app.use("/api/cart",cartRouter);
 
 export { app };
