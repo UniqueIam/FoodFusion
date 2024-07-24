@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
  function Navbar({setShowLogin}) {
 
   const [menu ,setMenu] = useState("home-underline");
-  const {token,setToken} = useContext(StoreContext);
+  const {token,setToken,getTotalCartAmount} = useContext(StoreContext);
 
   const navigate = useNavigate();
 
@@ -21,7 +21,6 @@ import { Link } from 'react-router-dom';
 
   return (
     <div className='nav-part'>
-      {/* <img src={assets.food_logo} alt='food logo' /> */}
           <Link to='/'><h2 id='food'>Food</h2></Link>
           <div className='navbar-center'>
       <ul className='navbar-menu'>
@@ -49,7 +48,7 @@ import { Link } from 'react-router-dom';
       </div>
       <div className='basket'>
         <Link to='/cart'><FaBasketShopping id='basket-dimension' /></Link>
-        <div className='dot'></div>
+        <div className={getTotalCartAmount() === 0 ?"":"dot"}></div>
       </div>
       <div className='search-bar'>
           <input 

@@ -9,10 +9,23 @@ const StoreContextProvider = (props) => {
   const url = "http://localhost:8000";
   const [token, setToken] = useState("");
 
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem('cartItems');
+    if (storedCartItems) {
+      setCartItems(JSON.parse(storedCartItems));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
+
   const addToCart = (itemId) => {
     setCartItems((prev) => {
       const newItemCount = prev[itemId] ? prev[itemId] + 1 : 1;
-      return { ...prev, [itemId]: newItemCount };
+      const updatedCartItems = { ...prev, [itemId]: newItemCount };
+      localStorage.setItem('cartItems', JSON.stringify(updatedCartItems)); // Save to localStorage
+      return updatedCartItems;
     });
   };
 
@@ -20,9 +33,12 @@ const StoreContextProvider = (props) => {
     setCartItems((prev) => {
       if (prev[itemId] === 1) {
         const { [itemId]: _, ...rest } = prev;
+        localStorage.setItem('cartItems', JSON.stringify(rest)); // Save to localStorage
         return rest;
       } else {
-        return { ...prev, [itemId]: prev[itemId] - 1 };
+        const updatedCartItems = { ...prev, [itemId]: prev[itemId] - 1 };
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems)); // Save to localStorage
+        return updatedCartItems;
       }
     });
   };
@@ -35,12 +51,24 @@ const StoreContextProvider = (props) => {
   useEffect(() => {
     async function loadData() {
       await fetchFoodList();
-      if (localStorage.getItem("token")) {
-        setToken(localStorage.getItem("token"));
+      const storedToken = localStorage.getItem("token");
+      if (storedToken) {
+        setToken(storedToken);
       }
     }
     loadData();
   }, []);
+
+  const getTotalCartAmount = () => {
+    let totalAmout = 0;
+    for (const item in cartItems) {
+      if (cartItems[item] > 0) {
+        let itemInfo = foodList.find((product) => product._id === item);
+        totalAmout += itemInfo.price * cartItems[item];
+      }
+    }
+    return totalAmout;
+  }
 
   const contextValue = {
     foodList,
@@ -52,6 +80,7 @@ const StoreContextProvider = (props) => {
     url,
     token,
     setToken,
+    getTotalCartAmount
   };
 
   return (
