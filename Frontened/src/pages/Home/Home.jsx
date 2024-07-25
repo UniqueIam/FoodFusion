@@ -3,6 +3,7 @@ import './Home.css'
 import Header from '../../components/Header/Header'
 import Menu from '../../components/Menu/Menu'
 import FoodDisplay from '../../components/FoodDisplay/FoodDisplay'
+import Footer from '../../components/Footer/Footer'
 
 function Home() {
     const [category,setCategory] = useState("All")
@@ -14,6 +15,7 @@ function Home() {
      <br/>
      <hr/>
      <FoodDisplay category={category}/>
+     <Footer />
     </>
   )
 }
