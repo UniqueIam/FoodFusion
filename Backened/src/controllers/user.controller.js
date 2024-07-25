@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const createToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    return jwt.sign({ id }, process.env.JWT_SECRET)
 };
 
 const registerUser = async (req, res) => {
@@ -105,6 +105,7 @@ const loginUser = async (req, res) => {
 
         const token = createToken(user._id);
         res.json({ success: true, token });
+
     } catch (error) {
         console.error("Error in loginUser:", error.message, error.stack);
         res.status(500).json({
