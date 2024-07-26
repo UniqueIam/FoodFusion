@@ -4,6 +4,7 @@
   padding: 10px;
   background-color: #f8f8f8;
   justify-content: space-between;
+  height: 70px; /* Set a consistent height for the navbar */
 }
 
 .nav-part .active {
@@ -30,7 +31,7 @@
 }
 
 .nav-part img {
-  height: 100px;
+  height: 35px; /* Adjusted to be consistent with profile icon size */
   width: auto;
 }
 
@@ -86,7 +87,14 @@
   cursor: pointer;
 }
 
-.nav-profle-dropdown {
+.profile-icon {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav-profile-dropdown {
   position: absolute;
   display: none;
   right: 0;
@@ -105,13 +113,13 @@
   transform: translateY(-10px);
 }
 
-.navbar-profile:hover .nav-profle-dropdown {
+.navbar-profile:hover .nav-profile-dropdown {
   display: flex;
   opacity: 1;
   transform: translateY(0);
 }
 
-.nav-profle-dropdown li {
+.nav-profile-dropdown li {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -120,28 +128,28 @@
   transition: background-color 0.3s ease;
 }
 
-.nav-profle-dropdown li:hover {
+.nav-profile-dropdown li:hover {
   background-color: rgba(255, 99, 71, 0.2); /* Light tomato color */
 }
 
-.nav-profle-dropdown img {
+.nav-profile-dropdown img {
   width: 20px;
   height: 23px;
   filter: brightness(0.8);
   transition: filter 0.3s ease;
 }
 
-.nav-profle-dropdown li:hover img {
+.nav-profile-dropdown li:hover img {
   filter: brightness(1);
 }
 
-.nav-profle-dropdown li p {
+.nav-profile-dropdown li p {
   margin: 0;
   font-size: 16px;
   color: #333;
   transition: color 0.3s ease;
 }
 
-.nav-profle-dropdown li p:hover {
+.nav-profile-dropdown li p:hover {
   color: tomato;
 }

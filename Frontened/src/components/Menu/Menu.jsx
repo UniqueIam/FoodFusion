@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import './Menu.css';
 import { menuList } from '../../assets/assets';
 
-function Menu({category,setCategory}) {
+const Menu = ({ category, setCategory, menuRef }) => {
 
   const menuListRef = useRef(null);
 
@@ -16,7 +16,7 @@ function Menu({category,setCategory}) {
 
   return (
     <>
-      <div className='menu-part'>
+      <div className='menu-part' ref={menuRef}>
         <h2 id='menu-heading'>Explore our Menu</h2>
         <p className='menu-text'>Explore our menu with fresh, flavorful dishes. Enjoy a diverse selection, including international cuisines, vegetarian, and vegan options. Satisfy your cravings with our daily specials.</p>
         <div
