@@ -20,16 +20,33 @@ const StoreContextProvider = (props) => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addToCart = (itemId) => {
+  useEffect(() => {
+    async function loadData() {
+      await fetchFoodList();
+      const storedToken = localStorage.getItem("token");
+      if (storedToken) {
+        setToken(storedToken);
+        await loadCartData(localStorage.getItem("token"))
+      }
+    }
+    loadData();
+  }, []);
+
+  const addToCart = async (itemId) => {
     setCartItems((prev) => {
       const newItemCount = prev[itemId] ? prev[itemId] + 1 : 1;
       const updatedCartItems = { ...prev, [itemId]: newItemCount };
       localStorage.setItem('cartItems', JSON.stringify(updatedCartItems)); // Save to localStorage
       return updatedCartItems;
     });
+    if (token) {
+      await axios.post(url + "/api/cart/add", { itemId }, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+    }
   };
 
-  const removeFromCart = (itemId) => {
+  const removeFromCart = async (itemId) => {
     setCartItems((prev) => {
       if (prev[itemId] === 1) {
         const { [itemId]: _, ...rest } = prev;
@@ -41,6 +58,11 @@ const StoreContextProvider = (props) => {
         return updatedCartItems;
       }
     });
+    if (token) {
+      await axios.post(url + "/api/cart/remove", { itemId }, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+    }
   };
 
   const fetchFoodList = async () => {
@@ -48,27 +70,29 @@ const StoreContextProvider = (props) => {
     setFoodList(response.data.data);
   };
 
-  useEffect(() => {
-    async function loadData() {
-      await fetchFoodList();
-      const storedToken = localStorage.getItem("token");
-      if (storedToken) {
-        setToken(storedToken);
-      }
-    }
-    loadData();
-  }, []);
+  const loadCartData = async(token) =>{
+     const response = await axios.post(url+"/api/cart/get",{},{
+                    headers:{ Authorization: `Bearer ${token}` }
+      
+    });
+    setCartItems(response.data.cartData);
+  }
 
   const getTotalCartAmount = () => {
-    let totalAmout = 0;
+    let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
         let itemInfo = foodList.find((product) => product._id === item);
-        totalAmout += itemInfo.price * cartItems[item];
+        if (itemInfo && itemInfo.price) {
+          totalAmount += itemInfo.price * cartItems[item];
+        } else {
+          console.error(`Item info or price not found for item ID: ${item}`);
+        }
       }
     }
-    return totalAmout;
+    return totalAmount;
   }
+  
 
   const contextValue = {
     foodList,

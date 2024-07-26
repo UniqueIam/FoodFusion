@@ -3,7 +3,7 @@ import { User } from "../models/user.models.js";
 
 const addToCart = async(req,res) =>{
     try {
-        let userData = await User.findOne(req.body.userId);
+        let userData = await User.findOne({_id:req.body.userId});
         let cartData = await userData.cartData;
         if(!cartData[req.body.itemId]){
             cartData[req.body.itemId] = 1;
@@ -15,7 +15,7 @@ const addToCart = async(req,res) =>{
         res.json({success:true,message:"Added to cart successfully"})
     } catch (error) {
         console.log(error);
-        res.json({success:false,message:"Error"});
+        res.json({success:false,message:"Error in adding the item to cart"});
     }
 }
 
@@ -35,7 +35,6 @@ const removeFromCart = async (req, res) => {
    }
     
 }
-
 
 //fetch user cart data
 const getCart = async (req, res) => {

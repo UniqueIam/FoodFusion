@@ -3,8 +3,11 @@ import validator from "validator";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const createToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET)
+const createToken = (user) => {
+    const payload = { id: user._id };
+    const secret = process.env.JWT_SECRET;
+    const options = { expiresIn: '1h' };
+    return jwt.sign(payload, secret, options);
 };
 
 const registerUser = async (req, res) => {
@@ -56,7 +59,7 @@ const registerUser = async (req, res) => {
         });
 
         const user = await newUser.save();
-        const token = createToken(user._id);
+        const token = createToken(user);
         res.status(201).json({ success: true, token });
     } catch (error) {
         console.error("Error in registerUser:", error.message, error.stack);
@@ -103,7 +106,7 @@ const loginUser = async (req, res) => {
             });
         }
 
-        const token = createToken(user._id);
+        const token = createToken(user); // Pass the entire user object
         res.json({ success: true, token });
 
     } catch (error) {
