@@ -24,6 +24,6 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 app.use("/api/food", foodRouter);
 app.use("/api/user",userRouter);
 app.use("/api/cart",cartRouter);
-app.use("/api/order/placeorder",orderRouter);
+app.use("/api/order",orderRouter);
 
 export { app };

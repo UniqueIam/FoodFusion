@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 const authMiddleware = async (req, res, next) => {
     const authHeader = req.headers.authorization;
 
-    console.log("Authorization Header:", authHeader); // Debugging line
+    console.log("Authorization Header:", authHeader); 
 
     if (!authHeader) {
         return res.status(401).json({
@@ -12,9 +12,9 @@ const authMiddleware = async (req, res, next) => {
         });
     }
 
-    const token = authHeader.split(' ')[1]; // Extract token
+    const token = authHeader.split(' ')[1]; 
 
-    console.log("Extracted Token:", token); // Debugging line
+    console.log("Extracted Token:", token); 
 
     if (!token) {
         return res.status(401).json({
@@ -30,7 +30,7 @@ const authMiddleware = async (req, res, next) => {
         req.body.userId = token_decode.id;
         next();
     } catch (error) {
-        console.error("JWT verification error:", error); // Detailed error logging
+        console.error("JWT verification error:", error); 
         res.status(401).json({
             success: false,
             message: "Invalid token."
