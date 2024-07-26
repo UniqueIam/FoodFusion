@@ -83,6 +83,7 @@
 
 .navbar-profile {
   position: relative;
+  cursor: pointer;
 }
 
 .nav-profle-dropdown {

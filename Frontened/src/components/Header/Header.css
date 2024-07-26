@@ -38,8 +38,12 @@
     font-size: max(1vw,14px);
     border-radius: 50px;
 }
-#view-menu{
-    width: 100px;
-    height: 36px;
+#header-view-menu{
+    width: 120px;
+    height: 43px;
     cursor: pointer;
+}
+#header-view-menu:hover{
+    background-color: tomato;
+    color: #fff;
 }

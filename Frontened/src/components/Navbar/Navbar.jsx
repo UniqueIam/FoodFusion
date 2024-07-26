@@ -35,7 +35,7 @@ import { Link } from 'react-router-dom';
         {!token 
         ?<button id='signup' onClick={()=>setShowLogin(true)}>Signup</button>
         :<div className='navbar-profile'>
-          <img src={assets.profile_icon} alt='' />
+          <img src={assets.profile_icon} alt='' style={{height:"35px",weight:"35px"}} />
           <ul className='nav-profle-dropdown'>
             <li>
               <img src={assets.order} alt='' /><p>Orders</p>
@@ -50,13 +50,13 @@ import { Link } from 'react-router-dom';
         <Link to='/cart'><FaBasketShopping id='basket-dimension' /></Link>
         <div className={getTotalCartAmount() === 0 ?"":"dot"}></div>
       </div>
-      <div className='search-bar'>
+      {/* <div className='search-bar'>
           <input 
             id='search-here'
             type='text'
             placeholder='search here'
           />
-      </div>
+      </div> */}
           
       </div>
     </div>
