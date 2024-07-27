@@ -42,7 +42,7 @@ function Navbar({ setShowLogin, menuRef }) {
             : <div className='navbar-profile'>
               <img src={assets.profile_icon} alt='' style={{ height: "35px", weight: "35px" }} />
               <ul className='nav-profile-dropdown'>
-                <li>
+                <li onClick={()=>navigate('/myorders')}>
                   <img src={assets.order} alt='' /><p>Orders</p>
                 </li><hr />
                 <li onClick={logout}><img src={assets.logout_icon} alt='' /><p>Logout</p> </li>

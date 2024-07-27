@@ -23,9 +23,10 @@ import food10 from './food3.png'
 import profile_icon from './profile-icon.png'
 import logout_icon from './logout_icon.png'
 import order from './order.png'
+import parcel_icon from './parcel_icon.png'
 
 export const assets ={
-  crossIcon,add_green,minus_red,add,profile_icon,logout_icon,order
+  crossIcon,add_green,minus_red,add,profile_icon,logout_icon,order,parcel_icon
 }
 export const menuList = [
   {

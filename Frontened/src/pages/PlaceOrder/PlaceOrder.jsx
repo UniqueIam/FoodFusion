@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './PlaceOrder.css';
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { useNavigate } from 'react-router-dom';
 
 const stripePromise = loadStripe('pk_test_51Pgp8gRur8rrQBeD7pjB7t5fzEhdwYx2DGTPKmme3HSFUQdXhisv2MsJeF3mrdzMculrfbTLI2PDFqzizMBukZR3001KLYvVAY');
 
@@ -68,6 +69,19 @@ function PlaceOrder() {
             alert('Error in Processing the payment');
         }
     };
+
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        if(!token){
+            alert("Singup/Login required")
+            navigate("/cart")
+        }
+        else if(getTotalCartAmount() === 0) {
+            alert("Select food items!")
+            navigate("/")
+        }
+    },[token])
 
     return (
         <form onSubmit={placeOrder} className='place-order'>
