@@ -5,6 +5,8 @@ import Home from './pages/Home/Home';
 import Cart from './pages/Cart/Cart';
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
 import LoginPopUp from './components/LoginPopUp/LoginPopUp';
+import Verify from './pages/Verify/Verify';
+
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -18,6 +20,7 @@ function App() {
         <Route path='/' element={<Home menuRef={menuRef} />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/placeorder' element={<PlaceOrder />} />
+        <Route path='/verify' element={<Verify />} />
       </Routes>
     </>
   );
