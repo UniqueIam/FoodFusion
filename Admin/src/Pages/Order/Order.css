@@ -1,0 +1,87 @@
+.admin-orders {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .admin-orders h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .admin-order-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .admin-order-item {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: calc(100% - 40px);
+    max-width: 300px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .admin-order-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .admin-order-item img {
+    margin-bottom: 10px;
+  }
+  
+  .admin-order-item div {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .admin-order-item-food {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .admin-order-item-name {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+  }
+  
+  .admin-order-item-address p {
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  .admin-order-item-phone {
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .admin-order-item p {
+    margin: 5px 0;
+  }
+  
+  .admin-order-item select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+  }
+  
+  @media (min-width: 600px) {
+    .admin-order-item {
+      width: calc(50% - 40px);
+    }
+  }
+  
+  @media (min-width: 900px) {
+    .admin-order-item {
+      width: calc(33.333% - 40px);
+    }
+  }
+  
