@@ -4,7 +4,7 @@
   padding: 10px;
   background-color: #f8f8f8;
   justify-content: space-between;
-  height: 70px; /* Set a consistent height for the navbar */
+  height: 70px; 
 }
 
 .nav-part .active {
@@ -31,7 +31,7 @@
 }
 
 .nav-part img {
-  height: 35px; /* Adjusted to be consistent with profile icon size */
+  height: 35px; 
   width: auto;
 }
 
@@ -129,7 +129,7 @@
 }
 
 .nav-profile-dropdown li:hover {
-  background-color: rgba(255, 99, 71, 0.2); /* Light tomato color */
+  background-color: rgba(255, 99, 71, 0.2); 
 }
 
 .nav-profile-dropdown img {
@@ -154,7 +154,6 @@
   color: tomato;
 }
 
-/* Media queries for responsive design */
 @media (max-width: 768px) {
   .nav-part {
     flex-direction: column;

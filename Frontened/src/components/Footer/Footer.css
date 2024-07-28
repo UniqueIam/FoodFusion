@@ -1,62 +1,90 @@
-.footer{
+.footer {
     color: #fff;
     width: 100%;
     height: auto;
-    background-color: rgb(48, 4, 4);
+    background-color: rgb(68, 28, 28);
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
-}
-.footer-left{
+    padding: 20px 0;
+  }
+  
+  .footer-left, .footer-middle, .footer-right {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-.footer-left p{
+  }
+  
+  .footer-left p, .footer-right p {
     color: #fff;
-}
-#footer-heading{
+  }
+  
+  #footer-heading, .footer-middle-heading, .footer-right-heading {
     font-size: 28px;
     font-family: sans-serif;
-}
-.social-media-icons{
+  }
+  
+  .social-media-icons {
     display: flex;
     gap: 10px;
-}
-#face-icon,#twit-icon,#link-icon{
+  }
+  
+  #face-icon, #twit-icon, #link-icon {
     font-size: 30px;
     cursor: pointer;
-}
-.footer-middle{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.footer-middle-heading{
-    font-size: 28px;
-    font-family: sans-serif;
-}
-.footer-middle-list{
+    color: inherit;
+  }
+  
+  .footer-middle-list {
     font-size: 18px;
     font-weight: 800;
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-.footer-middle-list li{
+  }
+  
+  .footer-middle-list li {
     cursor: pointer;
-}
-.footer-right{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: start;
-}
-.footer-right-heading{
-    font-size: 28px;
-    font-family: sans-serif;
-}
-.footer-right p{
-    color: #fff;
-}
+  }
+  
+  @media (max-width: 768px) {
+    .footer {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 30px;
+    }
+  
+    .footer-left, .footer-middle, .footer-right {
+      width: 100%;
+      align-items: center;
+    }
+  
+    .footer-left, .footer-middle, .footer-right {
+      margin-bottom: 20px;
+    }
+  
+    .social-media-icons {
+      justify-content: center;
+    }
+  
+    .footer-middle-list {
+      align-items: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #footer-heading, .footer-middle-heading, .footer-right-heading {
+      font-size: 24px;
+    }
+  
+    .footer-middle-list {
+      font-size: 16px;
+    }
+  
+    #face-icon, #twit-icon, #link-icon {
+      font-size: 26px;
+    }
+  }
+  

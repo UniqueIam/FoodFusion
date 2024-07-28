@@ -3,8 +3,17 @@ import './Footer.css'
 import { RiFacebookCircleLine } from "react-icons/ri";
 import { FaTwitterSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+  
+  const navigate = useNavigate();
+
+  const scrollToTopAndNavigate = (path) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigate(path);
+  };
+
   return (
     <div className='footer'>
       <div className='footer-left'>
@@ -13,15 +22,17 @@ const Footer = () => {
          <div className='social-media-icons'>
         <RiFacebookCircleLine id='face-icon' />
         <FaTwitterSquare id='twit-icon' />
-        <FaLinkedin id='link-icon'/>
+          <a href="https://www.linkedin.com/in/abhimanyukumar132004/" target="_blank" rel="noopener noreferrer">
+            <FaLinkedin id='link-icon'/>
+          </a>
         </div>
       </div> 
       <div className='footer-middle'>
       <h2 className='footer-middle-heading'>Company</h2>
       <ul className='footer-middle-list'>
-        <li>Home</li>
+      <li onClick={() => scrollToTopAndNavigate("/")}>Home</li>
         <li>About us</li>
-        <li>Delivery</li>
+        <li onClick={()=>navigate("/myorders")}>Delivery</li>
         <li>Privacy Policy</li>
       </ul>
       </div>
