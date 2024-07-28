@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 function Navbar({ setShowLogin, menuRef }) {
-
   const [menu, setMenu] = useState("home-underline");
   const { token, setToken, getTotalCartAmount } = useContext(StoreContext);
 
@@ -19,9 +18,14 @@ function Navbar({ setShowLogin, menuRef }) {
     navigate("/");
   };
 
-  const scrollToMenu = () => {
+  const handleHomeClick = () => {
+    setMenu("home-underline");
+    navigate('/');
+  };
+
+  const handleMenuClick = () => {
     setMenu("menu-underline");
-    menuRef.current?.scrollIntoView({ behavior: 'smooth' });
+    navigate('/', { state: { scrollToMenu: true } });
   };
 
   return (
@@ -29,8 +33,8 @@ function Navbar({ setShowLogin, menuRef }) {
       <Link to='/'><h2 id='food'>FoodFusion</h2></Link>
       <div className='navbar-center'>
         <ul className='navbar-menu'>
-          <li onClick={() => setMenu("home-underline")} className={menu === "home-underline" ? "active" : ""}>Home</li>
-          <li onClick={scrollToMenu} className={menu === "menu-underline" ? "active" : ""}>Menu</li>
+          <li onClick={handleHomeClick} className={menu === "home-underline" ? "active" : ""}>Home</li>
+          <li onClick={handleMenuClick} className={menu === "menu-underline" ? "active" : ""}>Menu</li>
           <li onClick={() => setMenu("contact-underline")} className={menu === "contact-underline" ? "active" : ""}>Contact</li>
           <li onClick={() => setMenu("about-underline")} className={menu === "about-underline" ? "active" : ""}>About</li>
         </ul>
@@ -40,9 +44,9 @@ function Navbar({ setShowLogin, menuRef }) {
           {!token
             ? <button id='signup' onClick={() => setShowLogin(true)}>Signup</button>
             : <div className='navbar-profile'>
-              <img src={assets.profile_icon} alt='' style={{ height: "35px", weight: "35px" }} />
+              <img src={assets.profile_icon} alt='' style={{ height: "35px", width: "35px" }} />
               <ul className='nav-profile-dropdown'>
-                <li onClick={()=>navigate('/myorders')}>
+                <li onClick={() => navigate('/myorders')}>
                   <img src={assets.order} alt='' /><p>Orders</p>
                 </li><hr />
                 <li onClick={logout}><img src={assets.logout_icon} alt='' /><p>Logout</p> </li>
@@ -54,13 +58,6 @@ function Navbar({ setShowLogin, menuRef }) {
           <Link to='/cart'><FaBasketShopping id='basket-dimension' /></Link>
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
-        {/* <div className='search-bar'>
-            <input 
-              id='search-here'
-              type='text'
-              placeholder='search here'
-            />
-        </div> */}
       </div>
     </div>
   );

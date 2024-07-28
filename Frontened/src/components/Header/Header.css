@@ -47,3 +47,9 @@
     background-color: tomato;
     color: #fff;
 }
+
+@media (max-width:480px) {
+    .header-content p{
+        font-size: 13px;
+    }
+}
