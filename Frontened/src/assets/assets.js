@@ -50,17 +50,13 @@ export const menuList = [
     menuImage :menu5
   },
   {
-    menuName :"Chowmein",
-    menuImage :menu6
+    menuName :"Tandoori",
+    menuImage :menu8
   },
   {
     menuName:"Biryani",
     menuImage :menu7
   },
-  {
-    menuImage :"Tandoori",
-    menuImage :menu8
-  }
  
 ]
 
