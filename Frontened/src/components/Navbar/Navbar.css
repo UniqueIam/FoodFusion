@@ -153,3 +153,59 @@
 .nav-profile-dropdown li p:hover {
   color: tomato;
 }
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .nav-part {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+    height: auto;
+  }
+
+  .navbar-menu {
+    flex-direction: column;
+    gap: 20px;
+    font-size: 18px;
+  }
+
+  .navbar-right {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+
+  .basket, .navbar-profile {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  #food {
+    font-size: 20px;
+  }
+
+  .navbar-menu {
+    gap: 15px;
+    font-size: 16px;
+  }
+
+  .navbar-right {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+  }
+
+  #signup {
+    width: 80px;
+    height: 35px;
+    font-size: 14px;
+  }
+
+  #basket-dimension {
+    font-size: 20px;
+  }
+}

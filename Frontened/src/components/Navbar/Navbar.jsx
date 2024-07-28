@@ -26,7 +26,7 @@ function Navbar({ setShowLogin, menuRef }) {
 
   return (
     <div className='nav-part'>
-      <Link to='/'><h2 id='food'>Food</h2></Link>
+      <Link to='/'><h2 id='food'>FoodFusion</h2></Link>
       <div className='navbar-center'>
         <ul className='navbar-menu'>
           <li onClick={() => setMenu("home-underline")} className={menu === "home-underline" ? "active" : ""}>Home</li>
