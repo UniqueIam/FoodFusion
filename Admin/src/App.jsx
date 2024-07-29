@@ -9,8 +9,12 @@ import Order from './Pages/Order/Order';
 import './App.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from 'react';
 
 const App = () => {
+  useEffect(()=>{
+
+  })
   
   const url = "http://localhost:8000";
   return (
@@ -21,7 +25,7 @@ const App = () => {
         <div className='main-content'>
           <Sidebar />
             <Routes>
-              <Route path='/add' element={<Add url={url}/>} />
+              <Route path='/add' element={<Add url={url} />} />
               <Route path='/list' element={<List url={url} />} />
               <Route path='/order' element={<Order url={url} />} />
             </Routes>
