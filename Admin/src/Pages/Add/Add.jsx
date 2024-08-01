@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Add.css';
 import { toast } from 'react-toastify';
 
-const Add = ({url}) => {
+const Add = ({url,token}) => {
   const [productName, setProductName] = useState('');
   const [productDescription, setProductDescription] = useState('');
   const [productPrice, setProductPrice] = useState('');
@@ -30,10 +30,8 @@ const Add = ({url}) => {
     formData.append('image', productImage);
 
     try {
-      const response = await axios.post('${url}/api/food/add', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+      const response = await axios.post(`${url}/api/food/add`, formData, {
+       headers: { Authorization: `Bearer ${token}` }
       });
 
       if (response.status === 201) {
@@ -52,7 +50,7 @@ const Add = ({url}) => {
       }
     } catch (error) {
       console.error('Error adding product:', error);
-      toast.error('Error adding product');
+      toast.error('Error in adding product');
     }
   };
 
@@ -79,8 +77,8 @@ const Add = ({url}) => {
             onChange={(e) => setProductName(e.target.value)}
             required
           />
-        </div>
-        <div className="form-group">
+         </div>
+         <div className="form-group">
           <label htmlFor="product-description">Product Description:</label>
           <textarea
             id="product-description"
@@ -112,6 +110,7 @@ const Add = ({url}) => {
             <option value="Maggi">Maggi</option>
             <option value="Noodles">Noodles</option>
             <option value="Dosa">Dosa</option>
+            <option value="Salad">Salad</option>
             <option value="Pure Veg">Pure Veg</option>
           </select>
         </div>

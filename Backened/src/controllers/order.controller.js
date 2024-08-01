@@ -30,7 +30,7 @@ const placeOrder = async (req, res) => {
                 },
                 unit_amount: item.price * 100
             },
-            quantity: item.quantity // Correct the typo from qunatity to quantity
+            quantity: item.quantity
         }));
 
         line_items.push({
@@ -41,7 +41,7 @@ const placeOrder = async (req, res) => {
                 },
                 unit_amount: 2 * 100
             },
-            quantity: 1 // Correct the typo from qunatity to quantity
+            quantity: 1
         });
 
         const session = await stripe.checkout.sessions.create({
@@ -57,11 +57,11 @@ const placeOrder = async (req, res) => {
             session_url: session.url
         });
     } catch (error) {
-        console.error("Error placing order:", error); // Log the error
+        console.error("Error placing order:", error); 
         res.status(500).json({
             success: false,
             message: "Error placing order",
-            error: error.message // Include the error message for debugging
+            error: error.message 
         });
     }
 };
