@@ -112,6 +112,7 @@ const Add = ({url,token}) => {
             <option value="Dosa">Dosa</option>
             <option value="Salad">Salad</option>
             <option value="Pure Veg">Pure Veg</option>
+            <option value="Paneer">Paneer</option>
           </select>
         </div>
         <button type="submit">Add Product</button>
