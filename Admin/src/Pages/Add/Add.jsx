@@ -111,7 +111,7 @@ const Add = ({url,token}) => {
             <option value="Noodles">Noodles</option>
             <option value="Dosa">Dosa</option>
             <option value="Salad">Salad</option>
-            <option value="Pure Veg">Pure Veg</option>
+            <option value="Deserts">Deserts</option>
             <option value="Paneer">Paneer</option>
           </select>
         </div>
