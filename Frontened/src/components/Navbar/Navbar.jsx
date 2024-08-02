@@ -1,14 +1,40 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState,useRef,useEffect } from 'react';
 import './Navbar.css';
 import { FaBasketShopping } from "react-icons/fa6";
 import { StoreContext } from '../../context/StoreContext';
 import { assets } from '../../assets/assets';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import {gsap} from "gsap";
 
 function Navbar({ setShowLogin, menuRef }) {
   const [menu, setMenu] = useState("home-underline");
   const { token, setToken, getTotalCartAmount } = useContext(StoreContext);
+
+  const navHead = useRef();
+  const navMenu = useRef();
+  const navMenuList = useRef([]);
+
+  useEffect(() => {
+    var t1 = gsap.timeline();
+    t1.from(navHead.current, {
+      y: -30,
+      opacity: 0,
+      duration: 1,
+      delay: 0.5
+    });
+    t1.from(navMenu.current, {
+      y: -30,
+      duration: 1,
+      opacity: 0
+    });
+    t1.from(navMenuList.current, {
+      y: -30,
+      opacity: 0,
+      stagger: 0.2,
+      duration: 1
+    });
+  }, []);
 
   const navigate = useNavigate();
 
@@ -30,13 +56,13 @@ function Navbar({ setShowLogin, menuRef }) {
 
   return (
     <div className='nav-part'>
-      <Link to='/'><h2 id='food'>FoodFusion</h2></Link>
+      <Link to='/'><h2 ref={navHead} id='food'>FoodFusion</h2></Link>
       <div className='navbar-center'>
-        <ul className='navbar-menu'>
-          <li onClick={handleHomeClick} className={menu === "home-underline" ? "active" : ""}>Home</li>
-          <li onClick={handleMenuClick} className={menu === "menu-underline" ? "active" : ""}>Menu</li>
-          <li onClick={() => setMenu("contact-underline")} className={menu === "contact-underline" ? "active" : ""}>Contact</li>
-          <li onClick={() => setMenu("about-underline")} className={menu === "about-underline" ? "active" : ""}>About</li>
+        <ul ref={navMenu} className='navbar-menu'>
+        <li ref={(el) => navMenuList.current[0] = el} onClick={handleHomeClick} className={menu === "home-underline" ? "active" : ""}>Home</li>
+          <li ref={(el) => navMenuList.current[1] = el} onClick={handleMenuClick} className={menu === "menu-underline" ? "active" : ""}>Menu</li>
+          <li ref={(el) => navMenuList.current[2] = el} onClick={() => setMenu("contact-underline")} className={menu === "contact-underline" ? "active" : ""}>Contact</li>
+          <li ref={(el) => navMenuList.current[3] = el} onClick={() => setMenu("about-underline")} className={menu === "about-underline" ? "active" : ""}>About</li>
         </ul>
       </div>
       <div className='navbar-right'>
