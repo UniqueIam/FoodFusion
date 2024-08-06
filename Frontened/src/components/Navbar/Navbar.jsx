@@ -5,7 +5,8 @@ import { StoreContext } from '../../context/StoreContext';
 import { assets } from '../../assets/assets';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import {gsap} from "gsap";
+import { useGSAP } from '@gsap/react';
+import gsap from "gsap";
 
 function Navbar({ setShowLogin, menuRef }) {
   const [menu, setMenu] = useState("home-underline");
@@ -15,24 +16,23 @@ function Navbar({ setShowLogin, menuRef }) {
   const navMenu = useRef();
   const navMenuList = useRef([]);
 
-  useEffect(() => {
+  useGSAP(() => {
     var t1 = gsap.timeline();
+    t1.from(".nav-part",{
+      y:-50,
+      duration:1,
+      opacity:0
+    })
     t1.from(navHead.current, {
       y: -30,
       opacity: 0,
-      duration: 1,
-      delay: 0.5
+      duration: 0.5,
     });
-    t1.from(navMenu.current, {
-      y: -30,
-      duration: 1,
-      opacity: 0
-    });
+
     t1.from(navMenuList.current, {
       y: -30,
       opacity: 0,
       stagger: 0.2,
-      duration: 1
     });
   }, []);
 

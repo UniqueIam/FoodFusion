@@ -30,7 +30,7 @@ export const assets ={
 }
 export const menuList = [
   {
-    menuName :"Paneer Tikka",
+    menuName :"Paneer",
     menuImage :menu1
   },
   {

@@ -6,6 +6,7 @@
    margin-left: 10vw;
    margin-top: 10vh;
    position: relative;
+   z-index: -2;
 }
 .header-content{
     position: absolute;
