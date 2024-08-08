@@ -2,6 +2,7 @@ import { User } from "../models/user.models.js";
 import validator from "validator";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import sendEmail from "../utils/email.js";
 
 const createToken = (user) => {
     const payload = { id: user._id };
@@ -60,6 +61,9 @@ const registerUser = async (req, res) => {
 
         const user = await newUser.save();
         const token = createToken(user);
+
+        //sending email to the user
+        sendEmail(user.email,"Welcom To FoodFusion",`Hi ${user.name},\n\nThank you for registering to our platform.`)
         res.status(201).json({ success: true, token });
     } catch (error) {
         console.error("Error in registerUser:", error.message, error.stack);

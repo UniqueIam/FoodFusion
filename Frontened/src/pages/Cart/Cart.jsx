@@ -1,12 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './Cart.css';
 import { StoreContext } from '../../context/StoreContext';
 import { assets } from '../../assets/assets';
 import { useNavigate } from 'react-router-dom';
+import gsap from 'gsap';
 
 function Cart() {
-  const { cartItems, foodList, removeFromCart,url,getTotalCartAmount } = useContext(StoreContext);
 
+  useEffect(() => {
+    gsap.from(".cart", {
+      y: -25,
+      opacity: 0,
+      duration: 1.3,
+      delay: 0.3
+    });
+  }, []);
+
+  const { cartItems, foodList, removeFromCart, url, getTotalCartAmount } = useContext(StoreContext);
   const navigate = useNavigate();
 
   return (
@@ -23,11 +33,10 @@ function Cart() {
         <div id='underline'></div>
         {foodList.map((item, index) => {
           if (cartItems[item._id] > 0) {
-            {/* console.log('Image URL:', url+"/uploads/"+item.image); */}
             return (
               <div key={index} className='cart-item'>
                 <div className='cart-item-image'>
-                  <img src={url+"/uploads/"+item.image} alt='image' style={{height:"60px", width:"60px"}} />
+                  <img src={url + "/uploads/" + item.image} alt='image' style={{ height: "60px", width: "60px" }} />
                 </div>
                 <span className='cart-item-title'>{item.name}</span>
                 <span className='cart-item-price'>${item.price.toFixed(2)}</span>
@@ -57,25 +66,25 @@ function Cart() {
               </div>
               <div className='cart-total-details'>
                 <p>Delivery Fee</p>
-                <p>$ {getTotalCartAmount()===0?0:2}</p>
+                <p>$ {getTotalCartAmount() === 0 ? 0 : 2}</p>
               </div>
               <div className='cart-total-details'>
                 <p>Total</p>
-                <p>$ {getTotalCartAmount()===0?0:getTotalCartAmount()+2}</p>
+                <p>$ {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</p>
               </div>
-              <button onClick={()=>navigate('/placeorder')}>PROCEED TO CHECKOUT</button>
+              <button onClick={() => navigate('/placeorder')}>PROCEED TO CHECKOUT</button>
             </div>
           </div>
-        
-         <div className='cart-promo-code'>
-          <div>
-            <p>If you have a promo code,Enter it here</p>
-            <div className='cart-promocode-input'>
-              <input type='text' placeholder='promo code' />
-              <button>Submit</button>
+
+          <div className='cart-promo-code'>
+            <div>
+              <p>If you have a promo code, Enter it here</p>
+              <div className='cart-promocode-input'>
+                <input type='text' placeholder='promo code' />
+                <button>Submit</button>
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </div>
     </div>

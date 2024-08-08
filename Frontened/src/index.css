@@ -5,6 +5,12 @@
 }
 body{
   min-height: 100vh;
+  overflow: smooth;
+}
+::-webkit-scrollbar{
+  display: none;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 a{
   text-decoration: none;
