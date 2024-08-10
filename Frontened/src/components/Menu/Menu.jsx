@@ -35,6 +35,7 @@ const Menu = ({ category, setCategory, menuRef }) => {
           </div>
           <button className='scroll-btn right' onClick={scrollRight}><FaChevronRight /></button>
         </div>
+         <button id='all-items'>View all items</button>
       </div>
     </>
   );

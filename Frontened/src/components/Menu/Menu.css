@@ -84,7 +84,14 @@
   .scroll-btn.right {
     right: -40px;
   }
-  
+  #all-items{
+    width: 120px;
+    height: 25px;
+    color: red;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+  }
   @media (max-width: 768px) {
     .menu-part {
       margin-left: 5vw;

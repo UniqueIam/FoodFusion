@@ -108,9 +108,9 @@ const Add = ({url,token}) => {
             <option value="select">Select category</option>
             <option value="Pasta">Pasta</option>
             <option value="Maggi">Maggi</option>
-            <option value="Noodles">Noodles</option>
+            <option value="Biryani">Biryani</option>
             <option value="Dosa">Dosa</option>
-            <option value="Salad">Salad</option>
+            <option value="Sandwich">Sandwich</option>
             <option value="Deserts">Deserts</option>
             <option value="Paneer">Paneer</option>
           </select>
