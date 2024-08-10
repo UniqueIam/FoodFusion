@@ -3,18 +3,8 @@ import './Cart.css';
 import { StoreContext } from '../../context/StoreContext';
 import { assets } from '../../assets/assets';
 import { useNavigate } from 'react-router-dom';
-import gsap from 'gsap';
 
 function Cart() {
-
-  useEffect(() => {
-    gsap.from(".cart", {
-      y: -25,
-      opacity: 0,
-      duration: 1.3,
-      delay: 0.3
-    });
-  }, []);
 
   const { cartItems, foodList, removeFromCart, url, getTotalCartAmount } = useContext(StoreContext);
   const navigate = useNavigate();
@@ -51,7 +41,7 @@ function Cart() {
                   />
                 </div>
               </div>
-            );
+            )
           }
           return null;
         })}
@@ -72,7 +62,12 @@ function Cart() {
                 <p>Total</p>
                 <p>$ {getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</p>
               </div>
-              <button onClick={() => navigate('/placeorder')}>PROCEED TO CHECKOUT</button>
+              <button
+              onClick={() => navigate('/placeorder')} 
+              style={{cursor:'pointer'}}
+              >
+              PROCEED TO CHECKOUT
+              </button>
             </div>
           </div>
 

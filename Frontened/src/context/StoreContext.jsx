@@ -11,10 +11,16 @@ const StoreContextProvider = (props) => {
 
   useEffect(() => {
     const storedCartItems = localStorage.getItem('cartItems');
-    if (storedCartItems) {
-      setCartItems(JSON.parse(storedCartItems));
+    if (storedCartItems && storedCartItems !== "undefined") {
+      try {
+        setCartItems(JSON.parse(storedCartItems));
+      } catch (error) {
+        console.error("Failed to parse cartItems from localStorage:", error);
+        localStorage.removeItem('cartItems'); 
+      }
     }
   }, []);
+  
 
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
@@ -36,7 +42,7 @@ const StoreContextProvider = (props) => {
     setCartItems((prev) => {
       const newItemCount = prev[itemId] ? prev[itemId] + 1 : 1;
       const updatedCartItems = { ...prev, [itemId]: newItemCount };
-      localStorage.setItem('cartItems', JSON.stringify(updatedCartItems)); // Save to localStorage
+      localStorage.setItem('cartItems', JSON.stringify(updatedCartItems)); 
       return updatedCartItems;
     });
     if (token) {

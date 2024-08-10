@@ -1,105 +1,149 @@
+/* General form styling */
 .place-order {
-    display: flex;
-    justify-content: space-between; 
-    margin-top: 3%;
-    padding: 20px;
-    gap: 20px; 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Left section - Delivery Information */
+.place-order-left {
+  width: 60%;
+  padding-right: 20px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.multi-fields {
+  display: flex;
+  gap: 10px;
+}
+
+.multi-fields input {
+  flex: 1;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+/* Right section - Cart Totals and Payment */
+.place-order-right {
+  width: 35%;
+  padding-left: 20px;
+}
+
+.cart-bottom {
+  margin-top: 20px;
+}
+
+.cart-total h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+}
+
+.cart-total-details {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-total-details p {
+  margin: 0;
+  font-weight: 600;
+  color: #555;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Stripe Card Element */
+.CardElement {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .place-order {
+      flex-direction: column;
   }
-  
-  .place-order-left {
-    flex: 1; 
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .place-order-left .title {
-    font-size: 34px;
-    font-weight: 800;
-    margin-bottom: 20px; 
-  }
-  
-  .multi-fields {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px; 
-  }
-  
-  .multi-fields input {
-    flex: 1; 
-    height: 30px; 
-    padding: 0 15px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    box-sizing: border-box; 
-  }
-  
-  input[type='text'],
-  input[type='email'] {
-    width: 100%; 
-    height: 35px; 
-    margin-bottom: 20px; 
-    padding: 0 15px;
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    box-sizing: border-box; 
-    font-size: 16px; 
-  }
-  
+
+  .place-order-left,
   .place-order-right {
-    flex: 1; 
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-left: 10%;
+      width: 100%;
+      padding: 0;
   }
-  
-  .cart-bottom {
-    background: #f8f8f8;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 4px;
+
+  .place-order-left {
+      margin-bottom: 20px;
   }
-  
-  .cart-total {
-    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .multi-fields {
+      flex-direction: column;
   }
-  
+
+  .multi-fields input {
+      width: 100%;
+  }
+
   .cart-total h2 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 10px;
+      font-size: 22px;
   }
-  
-  .cart-total-details {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 0;
+
+  button[type="submit"] {
+      font-size: 14px;
   }
-  
-  .cart-total-details p {
-    margin: 0;
+}
+
+@media (max-width: 480px) {
+  .place-order {
+      padding: 15px;
   }
-  
-  .cart-total-details p:first-of-type {
-    font-weight: 600;
+
+  .title {
+      font-size: 20px;
   }
-  
-  .cart-total-details p:last-of-type {
-    font-weight: 700;
+
+  input[type="text"],
+  input[type="email"],
+  button[type="submit"] {
+      font-size: 14px;
   }
-  
-  button {
-    background-color: tomato;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-top: 10px;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
+}
