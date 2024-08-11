@@ -6,7 +6,7 @@ import FoodDisplay from '../../components/FoodDisplay/FoodDisplay';
 import Footer from '../../components/Footer/Footer';
 import { useLocation } from 'react-router-dom';
 
-function Home() {
+function Home({footerRef}) {
   const [category, setCategory] = useState("All");
   const menuRef = useRef(null);
   const { state } = useLocation();
@@ -24,7 +24,7 @@ function Home() {
       <br />
       <hr />
       <FoodDisplay category={category} />
-      <Footer />
+      <Footer ref={footerRef} />
     </>
   );
 }

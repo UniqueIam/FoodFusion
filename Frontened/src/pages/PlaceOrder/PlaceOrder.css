@@ -1,4 +1,4 @@
-/* General form styling */
+
 .place-order {
   display: flex;
   flex-direction: row;
@@ -10,7 +10,6 @@
   margin: auto;
 }
 
-/* Left section - Delivery Information */
 .place-order-left {
   width: 60%;
   padding-right: 20px;
@@ -42,7 +41,6 @@ input[type="email"] {
   font-size: 16px;
 }
 
-/* Right section - Cart Totals and Payment */
 .place-order-right {
   width: 35%;
   padding-left: 20px;
@@ -89,15 +87,20 @@ button[type="submit"]:hover {
   background-color: #0056b3;
 }
 
-/* Stripe Card Element */
+
 .CardElement {
   margin-top: 20px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  width: calc(100% - 20px);
 }
 
-/* Responsive Styles */
+.StripeElement {
+  box-sizing: border-box;
+  width: 100%;
+}
+
 @media (max-width: 992px) {
   .place-order {
       flex-direction: column;

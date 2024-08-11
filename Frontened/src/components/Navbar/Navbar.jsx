@@ -8,28 +8,26 @@ import { Link } from 'react-router-dom';
 import { useGSAP } from '@gsap/react';
 import gsap from "gsap";
 
-function Navbar({ setShowLogin, menuRef }) {
+function Navbar({ setShowLogin, menuRef, footerRef }) { 
   const [menu, setMenu] = useState("home-underline");
   const { token, setToken, getTotalCartAmount } = useContext(StoreContext);
-
   const navHead = useRef();
   const navMenu = useRef();
   const navMenuList = useRef([]);
 
   useGSAP(() => {
     var t1 = gsap.timeline();
-    t1.from(".nav-part",{
-      y:-50,
-      duration:1,
-      opacity:0
+    t1.from(".nav-part", {
+      y: -50,
+      duration: 1,
+      opacity: 0
     })
-    t1.from(navHead.current, {
+    .from(navHead.current, {
       y: -30,
       opacity: 0,
       duration: 0.5,
-    });
-
-    t1.from(navMenuList.current, {
+    })
+    .from(navMenuList.current, {
       y: -30,
       opacity: 0,
       stagger: 0.2,
@@ -54,14 +52,21 @@ function Navbar({ setShowLogin, menuRef }) {
     navigate('/', { state: { scrollToMenu: true } });
   };
 
+  const handleContactClick = () => {
+    setMenu("contact-underline");
+    if (footerRef.current) { // Use footerRef here
+      footerRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className='nav-part'>
       <Link to='/'><h2 ref={navHead} id='food'>FoodFusion</h2></Link>
       <div className='navbar-center'>
         <ul ref={navMenu} className='navbar-menu'>
-        <li ref={(el) => navMenuList.current[0] = el} onClick={handleHomeClick} className={menu === "home-underline" ? "active" : ""}>Home</li>
+          <li ref={(el) => navMenuList.current[0] = el} onClick={handleHomeClick} className={menu === "home-underline" ? "active" : ""}>Home</li>
           <li ref={(el) => navMenuList.current[1] = el} onClick={handleMenuClick} className={menu === "menu-underline" ? "active" : ""}>Menu</li>
-          <li ref={(el) => navMenuList.current[2] = el} onClick={() => setMenu("contact-underline")} className={menu === "contact-underline" ? "active" : ""}>Contact</li>
+          <li ref={(el) => navMenuList.current[2] = el} onClick={handleContactClick} className={menu === "contact-underline" ? "active" : ""}>Contact</li>
           <li ref={(el) => navMenuList.current[3] = el} onClick={() => setMenu("about-underline")} className={menu === "about-underline" ? "active" : ""}>About</li>
         </ul>
       </div>
@@ -88,5 +93,6 @@ function Navbar({ setShowLogin, menuRef }) {
     </div>
   );
 }
+
 
 export default Navbar;

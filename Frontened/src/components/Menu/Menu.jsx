@@ -14,6 +14,10 @@ const Menu = ({ category, setCategory, menuRef }) => {
     menuListRef.current.scrollBy({ left: 150, behavior: 'smooth' });
   };
 
+  const viewAllItems = () => {
+    setCategory("All");
+  };
+
   return (
     <>
       <div className='menu-part' ref={menuRef}>
@@ -35,7 +39,7 @@ const Menu = ({ category, setCategory, menuRef }) => {
           </div>
           <button className='scroll-btn right' onClick={scrollRight}><FaChevronRight /></button>
         </div>
-         <button id='all-items'>View all items</button>
+        <button id='all-items' onClick={viewAllItems}>View all items</button>
       </div>
     </>
   );
