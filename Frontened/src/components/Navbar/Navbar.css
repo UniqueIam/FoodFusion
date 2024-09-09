@@ -1,15 +1,15 @@
+/* Navbar Container */
 .nav-part {
   display: flex;
   align-items: center;
   padding: 10px;
   background-color: #f8f8f8;
   justify-content: space-between;
-  height: 70px; 
-}
-
-.nav-part .active {
-  padding-bottom: 2px;
-  border-bottom: 2px solid black;
+  height: 70px;
+  position: relative; /* To allow the mobile menu to slide down properly */
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Small shadow for better separation */
 }
 
 #food {
@@ -18,29 +18,43 @@
   font-size: 25px;
 }
 
+.navbar-center {
+  flex-grow: 1; /* Allow it to grow and center the menu */
+  display: flex;
+  justify-content: center;
+}
+
 .navbar-menu {
   display: flex;
   gap: 50px;
   list-style: none;
   cursor: pointer;
-  font-size: 19.7px;
+  font-size: 18px;
 }
 
-.home-underline {
+.navbar-menu li {
+  padding: 5px 10px;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.navbar-menu li:hover {
   border-bottom: 2px solid black;
 }
 
-.nav-part img {
-  height: 35px; 
-  width: auto;
+/* Active link underlining */
+.active {
+  padding-bottom: 2px;
+  border-bottom: 2px solid black;
 }
 
+/* Navbar Right Section (Signup, Basket, etc.) */
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 27px;
+  gap: 20px;
 }
 
+/* Basket (Shopping cart) */
 .basket {
   position: relative;
   cursor: pointer;
@@ -52,7 +66,7 @@
   min-height: 10px;
   min-width: 10px;
   top: -7px;
-  border-radius: 10px;
+  border-radius: 50%;
   right: -6px;
 }
 
@@ -60,6 +74,7 @@
   font-size: 23px;
 }
 
+/* Signup Button */
 #signup {
   width: 100px;
   height: 40px;
@@ -78,20 +93,10 @@
   background-color: tomato;
 }
 
-#search-here {
-  width: 120px;
-}
-
+/* Profile Dropdown */
 .navbar-profile {
   position: relative;
   cursor: pointer;
-}
-
-.profile-icon {
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
-  object-fit: cover;
 }
 
 .nav-profile-dropdown {
@@ -104,7 +109,6 @@
   border-radius: 4px;
   background-color: #fff2ff;
   border: 1px solid tomato;
-  outline: 2px solid white;
   list-style: none;
   padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -143,68 +147,86 @@
   filter: brightness(1);
 }
 
-.nav-profile-dropdown li p {
-  margin: 0;
-  font-size: 16px;
-  color: #333;
-  transition: color 0.3s ease;
-}
-
-.nav-profile-dropdown li p:hover {
-  color: tomato;
+/* For the Mobile Menu */
+.hamburger {
+  display: none;
 }
 
 @media (max-width: 768px) {
-  .nav-part {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 20px;
-    height: auto;
+  .hamburger {
+    display: block;
+    font-size: 30px;
+    z-index: 100;
+    cursor: pointer;
   }
 
   .navbar-menu {
+    display: none;
+  }
+
+  .navbar-right .signup-area,
+  .basket {
+    display: none;
+  }
+
+  .navbar-center {
+    display: none;
+  }
+
+  .mobile-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideDown 0.3s ease-in-out;
+  }
+
+  .mobile-navbar-menu {
+    list-style: none;
+    display: flex;
     flex-direction: column;
     gap: 20px;
+    text-align: center;
+  }
+
+  .mobile-navbar-menu li {
     font-size: 18px;
+    cursor: pointer;
   }
 
-  .navbar-right {
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    align-items: flex-start;
-    margin-top: 10px;
-  }
-
-  .basket, .navbar-profile {
-    align-self: flex-end;
+  /* Slide down animation */
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
   }
 }
 
-@media (max-width: 480px) {
-  #food {
-    font-size: 20px;
+/* Adjustments for Larger Screens */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none;
   }
 
   .navbar-menu {
-    gap: 15px;
-    font-size: 16px;
+    display: flex;
+  }
+
+  .navbar-center {
+    display: flex;
+    justify-content: center;
   }
 
   .navbar-right {
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 10px;
-    width: 100%;
-  }
-
-  #signup {
-    width: 80px;
-    height: 35px;
-    font-size: 14px;
-  }
-
-  #basket-dimension {
-    font-size: 20px;
+    display: flex;
+    gap: 20px;
   }
 }
