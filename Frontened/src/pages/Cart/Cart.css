@@ -75,7 +75,8 @@
 
 /* Cart Totals Section */
 .cart-total {
-  width: 45%;
+  width: 85%;
+  /* background-color:red; */
 }
 
 .cart-total h2 {

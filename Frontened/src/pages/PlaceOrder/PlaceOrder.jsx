@@ -83,6 +83,13 @@ function PlaceOrder() {
         }
     },[token])
 
+    function myNew(e){
+        onChangeHandler(e);
+        validateEmail(e);
+    }
+
+    
+   
     return (
         <form onSubmit={placeOrder} className='place-order'>
             <div className='place-order-left'>
@@ -91,7 +98,11 @@ function PlaceOrder() {
                     <input required name='firstName' onChange={onChangeHandler} value={data.firstName} type='text' placeholder='First name' />
                     <input required name='lastName' onChange={onChangeHandler} value={data.lastName} type='text' placeholder='Last name' />
                 </div>
-                <input required name='email' onChange={onChangeHandler} value={data.email} type='email' placeholder='Email address' />
+                <input required name='email' onChange={ () =>{
+                    onChangeHandler(e);
+                    validateEmail(e);
+                }} 
+                value={data.email} type='email' placeholder='Email address' />
                 <input required name='street' onChange={onChangeHandler} value={data.street} type='text' placeholder='Street' />
                 <div className='multi-fields'>
                     <input required name='city' onChange={onChangeHandler} value={data.city} type='text' placeholder='City' />
